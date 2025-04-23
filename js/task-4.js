@@ -9,9 +9,10 @@ form.addEventListener("submit", event => {
         return alert("Please fill in all the fields!");
     }
 
-    const loginDetails = elements.map(element => ({
-        [element.name]: element.value
-    }));
+    const loginDetails = elements.reduce((obj, element) => {
+        obj[element.name] = element.value;
+        return obj;
+    }, {});
     
     console.log(loginDetails)
     form.reset();
